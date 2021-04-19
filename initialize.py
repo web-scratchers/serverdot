@@ -1,12 +1,12 @@
 import os
 
-os.system("sudo apt-get install -y openssl libssl-dev build-essential gdb tmux zlib1g-dev")
+os.system("sudo apt-get install -y openssl libssl-dev build-essential gdb tmux zlib1g-dev python3-pip")
 os.system("ssh-keygen -t ed25519 -C \"amarjayr@umich.edu\" -q -N \"\" -f ~/.ssh/index")
 os.system("ssh-keygen -t ed25519 -C \"amarjayr@umich.edu\" -q -N \"\" -f ~/.ssh/crawler")
 os.system("ssh-keygen -t ed25519 -C \"amarjayr@umich.edu\" -q -N \"\" -f ~/.ssh/set")
 os.system("ssh-keygen -t ed25519 -C \"amarjayr@umich.edu\" -q -N \"\" -f ~/.ssh/vector_string")
 
-f = open("/home/amar/.ssh/config", "x")
+f = open("/home/boss/.ssh/config", "x")
 
 config = """Host index
     Hostname github.com
@@ -55,3 +55,11 @@ os.system("cd index; git submodule update --init")
 
 os.system("curl -sSO https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh && sudo bash add-monitoring-agent-repo.sh && sudo apt-get update && sudo apt-get install -y stackdriver-agent && sudo service stackdriver-agent start")
 os.system("curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh && sudo bash add-logging-agent-repo.sh && sudo apt-get update && sudo apt-get install google-fluentd && sudo apt-get install -y google-fluentd-catch-all-config && sudo service google-fluentd start")
+
+os.system("mkdir ~/.config/apport")
+os.system("""echo \"[main]
+	unpackaged=true > ~/.config/apport/settings""")
+
+os.system("sudo sysctl -w net.ipv4.ip_local_port_range=\"15000 64000\"")
+os.system("sudo sysctl -w net.core.somaxconn=8192")
+os.system("sudo sysctl --system")
