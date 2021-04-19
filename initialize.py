@@ -58,6 +58,7 @@ os.system("curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh
 
 os.system("mkdir ~/.config")
 os.system("mkdir ~/.config/apport")
+os.system("touch ~/.config/apport/settings")
 os.system("""echo \"[main]
 	unpackaged=true > ~/.config/apport/settings""")
 
