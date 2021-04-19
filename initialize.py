@@ -63,3 +63,6 @@ os.system("""echo \"[main]
 os.system("sudo sysctl -w net.ipv4.ip_local_port_range=\"15000 64000\"")
 os.system("sudo sysctl -w net.core.somaxconn=8192")
 os.system("sudo sysctl --system")
+
+os.system("pip install psutil")
+os.system("pip install flask")
